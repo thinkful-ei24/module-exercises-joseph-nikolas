@@ -29,6 +29,16 @@ const store = (function(){
     const currentItem = this.findById(id);
     currentItem.checked = !currentItem.checked;
   };
+
+  const findAndUpdateName = function(id, newName){
+    try{
+      Item.validateName(newName);
+      const currentItem = this.findById(id);
+      currentItem.name = newName;
+    }catch(e){
+      console.log(e.message);
+    }
+  };
   
   
 
@@ -38,7 +48,8 @@ const store = (function(){
     searchTerm,
     findById,
     addItem,
-    findAndToggleChecked
+    findAndToggleChecked,
+    findAndUpdateName
   };
 
 }());

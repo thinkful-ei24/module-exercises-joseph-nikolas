@@ -3,9 +3,8 @@
 const Item = (function(){
   
   const validateName = function(name) {
-    console.log(name);
     if(name === '') {
-      throw new TypeError('Name does not exist');
+      throw new TypeError('Name cannot be blank');
     }
   };
 
