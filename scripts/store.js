@@ -39,6 +39,10 @@ const store = (function(){
       console.log(e.message);
     }
   };
+
+  const findAndDelete = function (id) {
+    this.items = this.items.filter(item => item.id !== id); 
+  };
   
   
 
@@ -49,7 +53,8 @@ const store = (function(){
     findById,
     addItem,
     findAndToggleChecked,
-    findAndUpdateName
+    findAndUpdateName,
+    findAndDelete
   };
 
 }());
