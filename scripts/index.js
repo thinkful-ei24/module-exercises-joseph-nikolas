@@ -7,5 +7,7 @@
 $(function() {
   shoppingList.bindEventListeners();
   shoppingList.render();
+  shoppingList.addItemToShoppingList('');
+  shoppingList.addItemToShoppingList('chickens');
 });
 

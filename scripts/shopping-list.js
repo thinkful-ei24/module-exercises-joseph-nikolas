@@ -1,4 +1,4 @@
-/* global store, cuid */
+/* global store, Item */
 
 // eslint-disable-next-line no-unused-vars
 const shoppingList = (function(){
@@ -47,7 +47,7 @@ const shoppingList = (function(){
     }
   
     // render the shopping list in the DOM
-    console.log('`render` ran');
+    // console.log('`render` ran');
     const shoppingListItemsString = generateShoppingItemsString(items);
   
     // insert that HTML into the DOM
@@ -56,7 +56,13 @@ const shoppingList = (function(){
   
   
   function addItemToShoppingList(itemName) {
-    store.items.push({ id: cuid(), name: itemName, checked: false });
+    try {
+      Item.validateName(itemName);
+      store.items.push(Item.create(itemName));
+    } catch(e){
+      console.log(`Cannot add item: ${itemName}`);
+    }
+    render();
   }
   
   function handleNewItemSubmit() {
@@ -158,5 +164,6 @@ const shoppingList = (function(){
   return {
     render: render,
     bindEventListeners: bindEventListeners,
+    addItemToShoppingList: addItemToShoppingList
   };
 }());

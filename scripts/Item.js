@@ -3,7 +3,8 @@
 const Item = (function(){
   
   const validateName = function(name) {
-    if(name === "") {
+    console.log(name);
+    if(name === '') {
       throw new TypeError('Name does not exist');
     }
   };
